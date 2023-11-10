@@ -21,24 +21,25 @@ int main()
     // Keep track of turns, first player always starts.
     char turn = FIRST_PLAYER;
 
-    // Take from the user the desired column
-    int move;
-
-    cout << "Please enter your desired column" << endl;
-
-    // Input validation loop
-    while (!(std::cin >> move) || std::cin.peek() != '\n' || move > 6 || move < 0)
-    {
-        std::cin.clear();                                                   // Clear the error flag
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
-        std::cout << "Invalid input. Please enter an integer between 0 and 6: ";
-    }
-
-    cout << move << endl;
-
     // The rest should be contained in a while loop until a verdict is produced
     while (verdict.empty())
     {
+
+        // Take from the user the desired column
+        int move;
+
+        cout << "Please enter your desired column" << endl;
+
+        // Input validation loop
+        while (!(std::cin >> move) || std::cin.peek() != '\n' || move > 6 || move < 0)
+        {
+            std::cin.clear();                                                   // Clear the error flag
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+            std::cout << "Invalid input. Please enter an integer between 0 and 6: ";
+        }
+
+        cout << move << endl;
+
         // We need to fill the bottom-most empty space of the selected column
         for (int i = 5; i >= 0; i--)
         {
@@ -61,8 +62,7 @@ int main()
             }
         }
 
-        // Check for a winner
+        // TODO Check for a winner
     }
-
     return 0;
 }
