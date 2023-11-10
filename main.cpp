@@ -24,7 +24,6 @@ int main()
     // The rest should be contained in a while loop until a verdict is produced
     while (verdict.empty())
     {
-
         // Take from the user the desired column
         int move;
 
@@ -37,8 +36,6 @@ int main()
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
             std::cout << "Invalid input. Please enter an integer between 0 and 6: ";
         }
-
-        cout << move << endl;
 
         // We need to fill the bottom-most empty space of the selected column
         for (int i = 5; i >= 0; i--)
@@ -61,16 +58,23 @@ int main()
                 break;
             }
         }
-        // Let's test what we have so far
+        // // Let's test what we have so far
 
-        for (int i = 0; i < 6; i++)
-        {
-            for (int j = 0; j < 7; j++)
-            {
-                cout << board[i][j];
-            }
-            cout << '\n';
-        }
+        // for (int i = 0; i < 6; i++)
+        // {
+        //     for (int j = 0; j < 7; j++)
+        //     {
+        //         if (board[i][j].empty())
+        //         {
+        //             cout << "E";
+        //         }
+        //         else
+        //         {
+        //             cout << board[i][j];
+        //         }
+        //     }
+        //     cout << '\n';
+        // }
 
         // TODO Check for a winner
     }
