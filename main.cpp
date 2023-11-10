@@ -48,7 +48,7 @@ int main()
                 board[i][move] = turn;
 
                 // Switch players after making the first move
-                if (turn = FIRST_PLAYER)
+                if (turn == FIRST_PLAYER)
                 {
                     turn = SECOND_PLAYER;
                 }
@@ -60,6 +60,16 @@ int main()
                 // Exit loop
                 break;
             }
+        }
+        // Let's test what we have so far
+
+        for (int i = 0; i < 6; i++)
+        {
+            for (int j = 0; j < 7; j++)
+            {
+                cout << board[i][j];
+            }
+            cout << '\n';
         }
 
         // TODO Check for a winner
