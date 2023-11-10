@@ -16,6 +16,8 @@ int main()
     // The first player will be represented by an X, the second by a Y
     const char FIRST_PLAYER = 'X', SECOND_PLAYER = 'Y';
 
+    string verdict = "";
+
     // Keep track of turns, first player always starts.
     char turn = FIRST_PLAYER;
 
@@ -33,6 +35,34 @@ int main()
     }
 
     cout << move << endl;
+
+    // The rest should be contained in a while loop until a verdict is produced
+    while (verdict.empty())
+    {
+        // We need to fill the bottom-most empty space of the selected column
+        for (int i = 5; i >= 0; i--)
+        {
+            if (board[i][move].empty())
+            { // Fill bottom-most available spot
+                board[i][move] = turn;
+
+                // Switch players after making the first move
+                if (turn = FIRST_PLAYER)
+                {
+                    turn = SECOND_PLAYER;
+                }
+                else
+                {
+                    turn = FIRST_PLAYER;
+                }
+
+                // Exit loop
+                break;
+            }
+        }
+
+        // Check for a winner
+    }
 
     return 0;
 }
