@@ -14,12 +14,13 @@ int main()
                                          {"", "", "", "", "", "", ""}}};
 
     // The first player will be represented by an X, the second by a Y
-    const char FIRST_PLAYER = 'X', SECOND_PLAYER = 'Y';
+    const string FIRST_PLAYER = "X", SECOND_PLAYER = "Y";
+    const array<string, 4> winningComination1 = {"X", "X", "X", "X"}, winningComination2 = {"Y", "Y", "Y", "Y"};
 
     string verdict = "";
 
     // Keep track of turns, first player always starts.
-    char turn = FIRST_PLAYER;
+    string turn = FIRST_PLAYER;
 
     // The rest should be contained in a while loop until a verdict is produced
     while (verdict.empty())
@@ -58,6 +59,7 @@ int main()
                 break;
             }
         }
+
         // // Let's test what we have so far
 
         // for (int i = 0; i < 6; i++)
@@ -77,6 +79,41 @@ int main()
         // }
 
         // TODO Check for a winner
+
+        // Horizontal check, starting with the bottom and climbing up
+        for (int i = 5; i >= 0; i--)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                if (board[i][j] == "E")
+                {
+                    continue;
+                }
+                // collect array of 4 consecutive elements
+                array<string, 4> sub;
+                for (int x = 0; x < 4; x++)
+                {
+                    sub[x] = board[i][j + x];
+                }
+
+                // Compare the 4 consecutive elements beginning from index j with the winning combinations
+                if (equal(sub.begin(), sub.end(), begin(winningComination1)))
+                {
+                    verdict = "Player 1 Wins!";
+                    break;
+                }
+                else if (equal(sub.begin(), sub.end(), begin(winningComination2)))
+                {
+                    verdict = "Player 2 Wins!";
+                    break;
+                }
+            }
+        }
+
+        // Vertical check
+
+        // Diagonal check
     }
+    cout << verdict << endl;
     return 0;
 }
