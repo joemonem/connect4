@@ -126,7 +126,7 @@ int main()
                     sub[j] = board[x - j][i];
                 }
 
-                // Compare the 4 consecutive elements beginning from index j with the winning combinations
+                // Compare the 4 consecutive elements
                 if (equal(sub.begin(), sub.end(), begin(winningComination1)))
                 {
                     verdict = "Player 1 Wins!";
@@ -141,6 +141,37 @@ int main()
         }
 
         // Diagonal check
+        // Start from the last array, check left to right and right to left, then move up an array
+        // Left to Right
+
+        // 3 iterations upwards, more than that and diagonals of 4 won't fit in the board
+        for (int i = 0; i < 3; i++)
+        {
+            // iterations to move right
+            for (int k = 0; k < 4; k++)
+            {
+                int y = 5;
+                array<string, 4> sub;
+
+                // move diagonally
+                for (int j = 0; j < 4; j++)
+                {
+                    sub[j] = board[y - i - j][j + k];
+                }
+
+                // Compare the 4 consecutive elements
+                if (equal(sub.begin(), sub.end(), begin(winningComination1)))
+                {
+                    verdict = "Player 1 Wins!";
+                    break;
+                }
+                else if (equal(sub.begin(), sub.end(), begin(winningComination2)))
+                {
+                    verdict = "Player 2 Wins!";
+                    break;
+                }
+            }
+        }
     }
     cout << verdict << endl;
     return 0;
