@@ -153,10 +153,30 @@ int main()
                 int y = 5;
                 array<string, 4> sub;
 
-                // move diagonally
+                // move diagonally left to right
                 for (int j = 0; j < 4; j++)
                 {
                     sub[j] = board[y - i - j][j + k];
+                }
+
+                // Compare the 4 consecutive elements
+                if (equal(sub.begin(), sub.end(), begin(winningComination1)))
+                {
+                    verdict = "Player 1 Wins!";
+                    break;
+                }
+                else if (equal(sub.begin(), sub.end(), begin(winningComination2)))
+                {
+                    verdict = "Player 2 Wins!";
+                    break;
+                }
+
+                // RIGHT to LEFT
+                int z = 6;
+                // move diagonally right to left
+                for (int j = 0; j < 4; j++)
+                {
+                    sub[j] = board[y - i - j][z - k - j];
                 }
 
                 // Compare the 4 consecutive elements
